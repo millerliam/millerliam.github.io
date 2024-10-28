@@ -12,6 +12,8 @@ const svg = d3.select("#boxPlot")
 
 // Load the Iris data
 d3.csv("iris.csv").then(function(data) {
+    console.log(data);  // Log the data to ensure it is being loaded
+
     // Convert data to numeric
     data.forEach(d => {
         d.petalLength = +d.petalLength;
@@ -30,7 +32,7 @@ d3.csv("iris.csv").then(function(data) {
     svg.append("g")
         .attr("transform", `translate(0,${height})`)
         .call(d3.axisBottom(xScale));
-    
+
     svg.append("g")
         .call(d3.axisLeft(yScale));
 
@@ -71,7 +73,4 @@ d3.csv("iris.csv").then(function(data) {
             .attr("x1", x)
             .attr("x2", x + boxWidth)
             .attr("y1", yScale(quartiles.median))
-            .attr("y2", yScale(quartiles.median))
-            .attr("stroke", "black");
-    });
-});
+            .attr("y2", yScale(quart
